@@ -20,13 +20,13 @@ pipeline {
           }
         }
       }
-    }
+    }     
     stage('RunContainerScan') {
       steps {
         withCredentials([string(credentialsId: 'SNYK_TOKEN', variable: 'SNYK_TOKEN')]) {
           script {
             try {
-              bat("C:\\Snyk\\snyk-win.exe  container test devsecops2306/testeb")
+              bat("D:\\DevSecopstools\\snyk\\snyk-win.exe  container test devsecops2306/testeb")
             } catch (err) {
               echo err.getMessage()
             }
@@ -43,7 +43,7 @@ pipeline {
     }
     stage('RunDASTUsingZAP') {
       steps {
-        bat("G:\\DevSecOps\\ZAPDemo\\ZAP_2.15.0_Crossplatform\\zap.sh -port 9393 -cmd -quickurl https://www.example.com -quickprogress -quickout G:\\DevSecOps\\ZAPDemo\\Zapoutput\\Output.html")
+        bat("D:\\DevSecopstools\\ZAP\\ZAP_2.16.0_Crossplatform\\zap.sh -port 9393 -cmd -quickurl https://www.example.com -quickprogress -quickout D:\\DevSecopstools\\ZAP\\zapoutput\\Output.html")
       }
     }
 
